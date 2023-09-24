@@ -1,1 +1,9 @@
 GET http://localhost:5000 HTTP/1.1
+###
+GET http://localhost:5000/contacts/all
+###
+GET http://localhost:5000/contacts/650f9f6a87912c45c53984ac
+###
+GET http://localhost:5000/contacts/650f9f7487912c45c53984ad
+###
+GET http://localhost:5000/contacts/650f9f7a87912c45c53984ae
