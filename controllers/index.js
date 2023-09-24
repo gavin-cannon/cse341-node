@@ -19,7 +19,6 @@ const threeContacts = (req, res, next) => {
     async function run() {
         try {
             // Connect the client to the server (optional starting in v4.7)
-            console.log("hello")
             await client.connect();
             const database = client.db("CSE-341");
             const proInfo = database.collection("Contacts");
@@ -39,7 +38,6 @@ const oneContact = (req, res, next) => {
     async function run() {
         try {
             // Connect the client to the server (optional starting in v4.7)
-            console.log("hello")
             await client.connect();
             const database = client.db("CSE-341");
             const proInfo = database.collection("Contacts");
