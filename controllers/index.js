@@ -18,12 +18,11 @@ const threeContacts = (req, res, next) => {
 
     async function run() {
         try {
-            // Connect the client to the server (optional starting in v4.7)
             await client.connect();
             const database = client.db("CSE-341");
-            const proInfo = database.collection("Contacts");
-            const proJson = await proInfo.find({}).toArray()
-            res.json(proJson);
+            const contacts = database.collection("Contacts");
+            const contactsJson = await contacts.find({}).toArray()
+            res.json(contactsJson);
         } finally {
             // Ensures that the client will close when you finish/error
             await client.close();
@@ -37,12 +36,11 @@ const oneContact = (req, res, next) => {
 
     async function run() {
         try {
-            // Connect the client to the server (optional starting in v4.7)
             await client.connect();
             const database = client.db("CSE-341");
-            const proInfo = database.collection("Contacts");
-            const proJson = await proInfo.findOne({ _id: new ObjectId(req.params.userId) });
-            res.json(proJson);
+            const contacts = database.collection("Contacts");
+            const singleContactJson = await contacts.findOne({ _id: new ObjectId(req.params.userId) });
+            res.json(singleContactJson);
         } finally {
             // Ensures that the client will close when you finish/error
             await client.close();
