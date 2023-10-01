@@ -39,4 +39,28 @@ content-type: application/json
 }
 ###
 DELETE http://localhost:5000/6518dbdcae886a2c3c8f6c34 HTTP/1.1
+###
+POST https://cse341-node-56ek.onrender.com/ HTTP/1.1
+content-type: application/json
 
+{
+    "firstName": "Jimmy",
+    "lastName": "Carter",
+    "email": "jimmycarter@president.gov",
+    "favoriteColor": "Blue",
+    "birthday": "10/01/1924"
+}
+###
+PUT https://cse341-node-56ek.onrender.com/6518edd4213653f0fe7c7c14 HTTP/1.1
+content-type: application/json
+
+
+{
+    "firstName": "Fimmy",
+    "lastName": "Farter",
+    "email": "jimmycarter@president.gov",
+    "favoriteColor": "Blue",
+    "birthday": "10/01/1924"
+}
+###
+DELETE https://cse341-node-56ek.onrender.com/6518edd4213653f0fe7c7c14 HTTP/1.1
