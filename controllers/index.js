@@ -2,11 +2,14 @@ const bethJson = (req, res, next) => {
     res.json(`Beth O'Driscoll`)
 }
 
+
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+
 const dotenv = require("dotenv").config({ path: ".env" });
 
 const uri = process.env.CONNECTION_STRING;
 
+const bodyParser = require("body-parser");
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
@@ -14,6 +17,7 @@ const client = new MongoClient(uri, {
         decprecationErrors: true,
     }
 });
+
 const threeContacts = (req, res, next) => {
 
     async function run() {
@@ -42,7 +46,7 @@ const oneContact = (req, res, next) => {
             const singleContactJson = await contacts.findOne({ _id: new ObjectId(req.params.userId) });
             res.json(singleContactJson);
         } finally {
-            // Ensures that the client will close when you finish/error
+            // Ensures that the client will close when you finish/erro
             await client.close();
         }
     }
@@ -50,4 +54,61 @@ const oneContact = (req, res, next) => {
 
 }
 
-module.exports = { bethJson, threeContacts, oneContact };
+const createContact = (req, res, next) => {
+
+    async function run() {
+
+        try {
+            await client.connect();
+            const database = client.db("CSE-341");
+            const contacts = database.collection("Contacts");
+            const newContact = req.body;
+            const result = await contacts.insertOne(newContact);
+            console.log(result);
+            res.status(201).json(result);
+
+        } finally {
+            await client.close();
+        }
+
+    }
+
+    run().catch(console.dir);
+}
+
+const updateContact = (req, res, next) => {
+
+    async function run() {
+
+        try {
+            await client.connect();
+            const database = client.db("CSE-341");
+            const contacts = database.collection("Contacts");
+            const result = await contacts.updateOne({ _id: new ObjectId(req.params.id) }, { $set: req.body });
+            res.status(204).send("No Content");
+        } finally {
+            await client.close();
+        }
+    }
+
+    run().catch(console.dir);
+}
+const deleteContact = (req, res, next) => {
+    console.log(req.params.id);
+    async function run() {
+
+        try {
+            await client.connect();
+            const database = client.db("CSE-341");
+            const contacts = database.collection("Contacts");
+            const result = await contacts.deleteOne({ _id: new ObjectId(req.params.id) });
+            console.log(result);
+            res.status(200).send("OK");
+        } finally {
+            await client.close();
+        }
+    }
+    run().catch(console.dir);
+}
+
+module.exports = { bethJson, threeContacts, oneContact, createContact, updateContact, deleteContact };
