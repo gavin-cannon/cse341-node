@@ -5,9 +5,11 @@ const port = process.env.PORT || 5000;
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+const bodyParser = require('body-parser');
 
 
 app
+    .use(bodyParser.json())
     .use((req, res, next) => {
         res.setHeader("Access-Control-Allow-Origin", "*");
         res.setHeader(
