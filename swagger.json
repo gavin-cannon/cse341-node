@@ -31,7 +31,13 @@
             "in": "body",
             "description": "Add a user",
             "schema": {
-              "$ref": "#/definitions/AddUser"
+              "type": "object",
+              "properties": {
+                "asdf": {
+                  "type": "string",
+                  "example": "qwer"
+                }
+              }
             }
           }
         ],
