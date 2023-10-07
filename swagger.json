@@ -25,6 +25,16 @@
       },
       "post": {
         "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Add a user",
+            "schema": {
+              "$ref": "#/definitions/AddUser"
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
