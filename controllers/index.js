@@ -28,11 +28,10 @@ const threeContacts = (req, res, next) => {
                 const contactsJson = await contacts.find({}).toArray()
                 res.json(contactsJson);
             } finally {
-                // Ensures that the client will close when you finish/error
-                await client.close();
+                // await client.close();
             }
         }
-        run().catch(console.dir);
+        // run().catch(console.dir);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -48,8 +47,8 @@ const oneContact = (req, res, next) => {
                 const singleContactJson = await contacts.findOne({ _id: new ObjectId(req.params.userId) });
                 res.json(singleContactJson);
             } finally {
-                // Ensures that the client will close when you finish/erro
-                await client.close();
+
+                // await client.close();
             }
         }
         run().catch(console.dir);
@@ -72,7 +71,7 @@ const createContact = (req, res, next) => {
                 res.status(201).json(result);
 
             } finally {
-                await client.close();
+                // await client.close();
             }
 
         }
@@ -94,7 +93,7 @@ const updateContact = (req, res, next) => {
                 const result = await contacts.updateOne({ _id: new ObjectId(req.params.id) }, { $set: req.body });
                 res.status(204).send("No Content");
             } finally {
-                await client.close();
+                // await client.close();
             }
         }
 
@@ -116,7 +115,7 @@ const deleteContact = (req, res, next) => {
                 console.log(result);
                 res.status(200).send("OK");
             } finally {
-                await client.close();
+                // await client.close();
             }
         }
         run().catch(console.dir);

@@ -51,7 +51,7 @@ content-type: application/json
     "birthday": "10/01/1924"
 }
 ###
-PUT https://cse341-node-56ek.onrender.com/6518f540bf9850a489170be9 HTTP/1.1
+PUT https://cse341-node-56ek.onrender.com/contacts/6520b80ca8b680345a72eeb2 HTTP/1.1
 content-type: application/json
 
 
@@ -63,4 +63,4 @@ content-type: application/json
     "birthday": "10/01/1924"
 }
 ###
-DELETE https://cse341-node-56ek.onrender.com/6518f540bf9850a489170be9 HTTP/1.1
+DELETE https://cse341-node-56ek.onrender.com/6520b80ca8b680345a72eeb2 HTTP/1.1
