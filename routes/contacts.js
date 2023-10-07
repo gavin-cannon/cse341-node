@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 // app.use(bodyParser.json())
 
 routes.use("/", require("./swagger"));
-routes.get('/contacts/all', controller.threeContacts);
+routes.get('/contacts', controller.threeContacts);
 routes.get('/contacts/:userId', controller.oneContact);
 routes.post('/', bodyParser.json(), controller.createContact);
 routes.put('/:id', bodyParser.json(), controller.updateContact);
