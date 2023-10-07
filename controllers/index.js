@@ -59,7 +59,13 @@ const oneContact = (req, res, next) => {
 }
 
 const createContact = (req, res, next) => {
-
+    const contact = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        favoriteColor: req.body.favoriteColor,
+        birthday: req.body.birthday
+    };
     try {
         async function run() {
 
