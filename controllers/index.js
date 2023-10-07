@@ -28,10 +28,11 @@ const threeContacts = (req, res, next) => {
                 const contactsJson = await contacts.find({}).toArray()
                 res.json(contactsJson);
             } finally {
+                // Ensures that the client will close when you finish/error
                 // await client.close();
             }
         }
-        // run().catch(console.dir);
+        run().catch(console.dir);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -47,7 +48,7 @@ const oneContact = (req, res, next) => {
                 const singleContactJson = await contacts.findOne({ _id: new ObjectId(req.params.userId) });
                 res.json(singleContactJson);
             } finally {
-
+                // Ensures that the client will close when you finish/erro
                 // await client.close();
             }
         }
