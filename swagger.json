@@ -25,22 +25,6 @@
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "description": "Add a user",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "asdf": {
-                  "type": "string",
-                  "example": "qwer"
-                }
-              }
-            }
-          }
-        ],
         "responses": {
           "201": {
             "description": "Created"

@@ -59,11 +59,7 @@ const oneContact = (req, res, next) => {
 }
 
 const createContact = (req, res, next) => {
-    /*  #swagger.parameters['obj'] = {
-        in: 'body',
-        description: 'Add a user',
-        schema: { asdf: 'qwer' }
-    } */
+
     try {
         async function run() {
 
