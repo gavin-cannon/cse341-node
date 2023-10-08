@@ -4,7 +4,6 @@ const swaggerDocument = require("../swagger.json");
 const bodyParser = require("body-parser");
 // app.use(bodyParser.json());
 
-router.use("/api-docs", swaggerUi.serve);
-router.get("/api-docs", bodyParser.json(), swaggerUi.setup(swaggerDocument));
+router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 module.exports = router;
