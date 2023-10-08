@@ -78,14 +78,6 @@ const createContact = (req, res, next) => {
 };
 
 const updateContact = (req, res, next) => {
-  const contact = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    favoriteColor: req.body.favoriteColor,
-    birthday: req.body.birthday,
-  };
-
   async function run() {
     try {
       await client.connect();
