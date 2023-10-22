@@ -38,7 +38,7 @@
                 "party": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "deathCause": {
                   "example": "any"
                 },
                 "birthday": {
@@ -113,7 +113,7 @@
                 "party": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "deathCause": {
                   "example": "any"
                 },
                 "birthday": {
@@ -157,6 +157,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }

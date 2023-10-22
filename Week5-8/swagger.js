@@ -5,8 +5,8 @@ const doc = {
     title: "Presidents API",
     description: "Shout out to Jimmy Carter",
   },
-  host: "localhost:5000",
-  schemes: ["http"],
+  host: "presidents.onrender.com",
+  schemes: ["https"],
 };
 
 const outputFile = "./swagger.json";

@@ -129,7 +129,12 @@ const deletePresident = (req, res, next) => {
         _id: new ObjectId(req.params.id),
       });
       console.log(result);
-      res.status(200).send("OK");
+      if (result.deletedCount > 0) {
+        res.status(200).send("OK");
+      } else {
+        res.status(500).json(response.error) ||
+          "Some error occured while deleting the President file.";
+      }
     } finally {
       await client.close();
     }
