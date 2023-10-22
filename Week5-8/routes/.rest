@@ -1,8 +1,8 @@
 GET http://localhost:5000 HTTP/1.1
 ###
-GET http://localhost:5000/presidents/all HTTP/1.1
+GET http://localhost:5000/presidents HTTP/1.1
 ###
-GET http://localhost:5000/presidents/650f9f7a87912c45c53984ae HTTP/1.1
+GET http://localhost:5000/presidents/652b7f34198ac4923cd77cb8 HTTP/1.1
 ###
 GET https://cse341-node-56ek.onrender.com/presidents/all HTTP/1.1
 ###
@@ -28,7 +28,7 @@ content-type: application/json
     "birthday": "10/01/1900"
 }
 ###
-DELETE http://localhost:5000/presidents/6518dbdcae886a2c3c8f6c34 HTTP/1.1
+DELETE http://localhost:5000/presidents/6534b51298a3d8581af46664 HTTP/1.1
 ###
 POST https://presidents.onrender.com/presidents HTTP/1.1
 content-type: application/json

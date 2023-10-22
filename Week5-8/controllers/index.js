@@ -30,6 +30,13 @@ const allPresidents = (req, res, next) => {
 };
 
 const onePresident = (req, res, next) => {
+  if (!ObjectId.isValid(req.params.userId)) {
+    res
+      .status(400)
+      .json(
+        "ID is not valid. ID must be valid to get one President. Please try again."
+      );
+  }
   async function run() {
     try {
       await client.connect();
@@ -52,7 +59,7 @@ const createPresident = (req, res, next) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     party: req.body.party,
-    deathCause: req.body.favoriteColor,
+    deathCause: req.body.deathCause,
     birthday: req.body.birthday,
     vice: req.body.vice,
     start: req.body.start,
@@ -80,7 +87,7 @@ const updatePresident = (req, res, next) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     party: req.body.party,
-    favoriteColor: req.body.favoriteColor,
+    deathCause: req.body.deathCause,
     birthday: req.body.birthday,
     vice: req.body.vice,
     start: req.body.start,
@@ -105,6 +112,14 @@ const updatePresident = (req, res, next) => {
   run().catch(console.dir);
 };
 const deletePresident = (req, res, next) => {
+  console.log(req.params.id);
+  if (!ObjectId.isValid(req.params.id)) {
+    res
+      .status(400)
+      .json(
+        "ID is not valid. ID must be valid to delete one President. Please try again."
+      );
+  }
   async function run() {
     try {
       await client.connect();
@@ -113,6 +128,7 @@ const deletePresident = (req, res, next) => {
       const result = await presidents.deleteOne({
         _id: new ObjectId(req.params.id),
       });
+      console.log(result);
       res.status(200).send("OK");
     } finally {
       await client.close();

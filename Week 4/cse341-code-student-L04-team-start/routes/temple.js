@@ -1,9 +1,10 @@
-const routes = require('express').Router();
-const temples = require('../controllers/temple.js');
+const routes = require("express").Router();
+const temples = require("../controllers/temple.js");
+const validation = require("../middleware/validation-middleware.js");
 
-routes.get('/', temples.findAll);
-routes.get('/:temple_id', temples.findOne);
+routes.get("/", temples.findAll);
+routes.get("/:temple_id", temples.findOne);
 
-routes.post('/', temples.create);
+routes.post("/", validation.saveContact, temples.create);
 
 module.exports = routes;
