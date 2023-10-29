@@ -5,3 +5,7 @@ const isLoggedIn = (req, res, next) => {
     res.sendStatus(401);
   }
 };
+
+module.exports = {
+  isLoggedIn,
+};

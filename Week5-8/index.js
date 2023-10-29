@@ -34,7 +34,7 @@ app.get("/failed", (req, res) => {
   res.send("Failed");
 });
 app.get("/success", isLoggedIn, (req, res) => {
-  res.send(`Welcome ${req.user.email}`);
+  res.send(`Welcome ${req.user.emails[0].value}`);
 });
 
 app.get(
