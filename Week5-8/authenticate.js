@@ -20,7 +20,7 @@ passport.use(
     {
       clientID: googleID,
       clientSecret: googleSecret,
-      callbackURL: "http://localhost:5000/presidents/",
+      callbackURL: "http://localhost:5000/google/callback",
     },
     function (accessToken, refreshToken, profile, cb) {
       console.log(profile);
