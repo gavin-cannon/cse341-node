@@ -1,5 +1,7 @@
+const express = require("express");
 const passport = require("passport");
 const dotenv = require("dotenv").config({ path: ".env" });
+
 const googleID = process.env.GOOGLE_ID;
 const googleSecret = process.env.GOOGLE_SECRET;
 
@@ -21,6 +23,7 @@ passport.use(
       callbackURL: "http://localhost:5000/presidents/",
     },
     function (accessToken, refreshToken, profile, cb) {
+      console.log(profile);
       //   User.findOrCreate({ googleId: profile.id }, function (err, user) {
       //     return cb(err, user);
       //   });
