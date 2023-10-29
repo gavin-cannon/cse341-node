@@ -19,7 +19,11 @@ const allPresidents = (req, res, next) => {
       await client.connect();
       const database = client.db("Presidents");
       const presidents = database.collection("Presidents");
-      const presidentsJson = await presidents.find({}).toArray();
+      const presidentsJson = await presidents.find({}).toArray((err, lists) => {
+        if (err) {
+          res.status(400).json({ message: err });
+        }
+      });
       res.json(presidentsJson);
     } finally {
       // Ensures that the client will close when you finish/error
@@ -42,9 +46,16 @@ const onePresident = (req, res, next) => {
       await client.connect();
       const database = client.db("Presidents");
       const presidents = database.collection("Presidents");
-      const singlePresidentJson = await presidents.findOne({
-        _id: new ObjectId(req.params.userId),
-      });
+      const singlePresidentJson = await presidents.findOne(
+        {
+          _id: new ObjectId(req.params.userId),
+        },
+        function (err, result) {
+          if (err) {
+            res.status(400).json({ message: err });
+          }
+        }
+      );
       res.json(singlePresidentJson);
     } finally {
       // Ensures that the client will close when you finish/erro
@@ -103,7 +114,16 @@ const updatePresident = (req, res, next) => {
         { _id: new ObjectId(req.params.id) },
         { $set: req.body }
       );
-      res.status(204).send("No Content");
+      if (response.modifiedCount > 0) {
+        res.status(204).send("No Content");
+      } else {
+        res
+          .status(500)
+          .json(
+            response.error ||
+              "Some error occured while updating the information."
+          );
+      }
     } finally {
       await client.close();
     }
