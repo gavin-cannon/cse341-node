@@ -1,4 +1,3 @@
-const express = require("express");
 const passport = require("passport");
 const dotenv = require("dotenv").config({ path: ".env" });
 
@@ -8,11 +7,11 @@ const googleSecret = process.env.GOOGLE_SECRET;
 var GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user);
 });
 
 passport.deserializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user);
 });
 
 passport.use(
@@ -21,9 +20,12 @@ passport.use(
       clientID: googleID,
       clientSecret: googleSecret,
       callbackURL: "http://localhost:5000/google/callback",
+      passReqToCallback: true,
     },
-    function (accessToken, refreshToken, profile, cb) {
+    function (request, accessToken, refreshToken, profile, done) {
+      console.log("googleID");
       console.log(profile);
+      return done(null, profile);
       //   User.findOrCreate({ googleId: profile.id }, function (err, user) {
       //     return cb(err, user);
       //   });

@@ -5,10 +5,10 @@
     "description": "Shout out to Jimmy Carter",
     "version": "1.0.0"
   },
-  "host": "presidents.onrender.com",
+  "host": "localhost:5000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/presidents": {

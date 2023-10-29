@@ -15,6 +15,14 @@ app.use(
   })
 );
 
+const isLoggedIn = (req, res, next) => {
+  if (req.user) {
+    next();
+  } else {
+    res.sendStatus(401);
+  }
+};
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -25,7 +33,7 @@ app.get("/", (req, res) => {
 app.get("/failed", (req, res) => {
   res.send("Failed");
 });
-app.get("/success", (req, res) => {
+app.get("/success", isLoggedIn, (req, res) => {
   res.send(`Welcome ${req.user.email}`);
 });
 
@@ -45,6 +53,12 @@ app.get(
     res.redirect("/success");
   }
 );
+
+app.get("/logout", (req, res) => {
+  req.session = null;
+  req.logout();
+  res.redirect("/");
+});
 
 process.on("uncaughtException", (err, origin) => {
   console.log(
