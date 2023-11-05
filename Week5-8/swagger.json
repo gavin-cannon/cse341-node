@@ -5,9 +5,9 @@
     "description": "Shout out to Jimmy Carter",
     "version": "1.0.0"
   },
-  "host": "https://presidents.onrender.com",
+  "host": "presidents.onrender.com",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": ["https"],
   "paths": {
     "/login": {
       "post": {
@@ -22,6 +22,16 @@
     "/logout": {
       "post": {
         "description": "Go to this page to logout",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "description": "",
         "responses": {
           "200": {
             "description": "OK"
